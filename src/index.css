@@ -91,6 +91,101 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Gamification Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 355 7% 97%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+    --info: 199 89% 48%;
+    --info-foreground: 210 20% 95%;
+    
+    /* XP & Level Colors */
+    --xp-primary: 142 76% 36%;
+    --xp-secondary: 142 69% 58%;
+    --level-bronze: 28 76% 67%;
+    --level-silver: 0 0% 75%;
+    --level-gold: 45 93% 58%;
+    --level-platinum: 263 70% 50%;
+    --level-diamond: 199 89% 48%;
+    
+    /* Skill Colors */
+    --skill-locked: 220 14% 96%;
+    --skill-available: 142 76% 36%;
+    --skill-completed: 45 93% 58%;
+    
+    /* Gamification Gradients */
+    --gradient-xp: linear-gradient(135deg, hsl(var(--xp-primary)), hsl(var(--xp-secondary)));
+    --gradient-level: linear-gradient(135deg, hsl(var(--level-gold)), hsl(var(--level-bronze)));
+    --gradient-skill: linear-gradient(135deg, hsl(var(--skill-available)), hsl(var(--success)));
+    
+    /* Animation Variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Dark Mode Gamification Colors */
+    --success: 142 71% 45%;
+    --success-foreground: 355 7% 97%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+    --info: 199 89% 48%;
+    --info-foreground: 210 20% 95%;
+    
+    --xp-primary: 142 71% 45%;
+    --xp-secondary: 142 69% 58%;
+    --level-bronze: 28 76% 67%;
+    --level-silver: 0 0% 75%;
+    --level-gold: 45 93% 58%;
+    --level-platinum: 263 70% 50%;
+    --level-diamond: 199 89% 48%;
+    
+    --skill-locked: 217.2 32.6% 17.5%;
+    --skill-available: 142 71% 45%;
+    --skill-completed: 45 93% 58%;
+    
+    --gradient-xp: linear-gradient(135deg, hsl(var(--xp-primary)), hsl(var(--xp-secondary)));
+    --gradient-level: linear-gradient(135deg, hsl(var(--level-gold)), hsl(var(--level-bronze)));
+    --gradient-skill: linear-gradient(135deg, hsl(var(--skill-available)), hsl(var(--success)));
+    
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.5);
   }
 }
 
@@ -101,5 +196,39 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .xp-bar {
+    @apply h-2 bg-gradient-xp rounded-full transition-all duration-500;
+  }
+  
+  .level-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-level text-white shadow-glow;
+  }
+  
+  .skill-node {
+    @apply relative w-16 h-16 rounded-full border-2 transition-all duration-300 cursor-pointer;
+  }
+  
+  .skill-node.locked {
+    @apply bg-skill-locked border-muted-foreground/30 cursor-not-allowed;
+  }
+  
+  .skill-node.available {
+    @apply bg-skill-available border-skill-available shadow-glow hover:scale-110;
+  }
+  
+  .skill-node.completed {
+    @apply bg-skill-completed border-skill-completed shadow-glow;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-card/80 border border-border/50 rounded-xl shadow-lg;
+  }
+  
+  .hero-gradient {
+    @apply bg-gradient-to-br from-primary via-primary/80 to-primary/60;
   }
 }
