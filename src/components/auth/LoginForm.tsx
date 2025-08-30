@@ -27,7 +27,7 @@ export const LoginForm = () => {
         title: "Vítejte zpět!",
         description: "Úspěšně jste se přihlásili.",
       });
-      navigate('/dashboard');
+      navigate('/app/dashboard');
     } else {
       toast({
         title: "Chyba přihlášení",

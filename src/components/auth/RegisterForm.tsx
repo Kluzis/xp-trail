@@ -82,7 +82,7 @@ export const RegisterForm = () => {
         title: "Registrace úspěšná!",
         description: "Zkontrolujte svůj email pro potvrzení účtu.",
       });
-      navigate('/verify-email');
+      navigate('/app/dashboard');
     } else {
       toast({
         title: "Chyba registrace",

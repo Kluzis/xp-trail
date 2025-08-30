@@ -41,7 +41,7 @@ const App = () => (
             } />
             
             {/* Protected routes */}
-            <Route path="/" element={
+            <Route path="/app" element={
               <AuthGuard>
                 <AppLayout />
               </AuthGuard>
