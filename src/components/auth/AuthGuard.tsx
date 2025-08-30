@@ -18,6 +18,8 @@ export const AuthGuard = ({
   const { user, profile, loading } = useAuth();
   const location = useLocation();
 
+  console.log('AuthGuard - loading:', loading, 'user:', !!user, 'profile:', !!profile, 'requireAuth:', requireAuth);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -31,16 +33,20 @@ export const AuthGuard = ({
   }
 
   if (requireAuth && !user) {
+    console.log('AuthGuard - redirecting to login');
     return <Navigate to={redirectTo} state={{ from: location }} replace />;
   }
 
   if (requireAdmin && profile?.role !== 'admin') {
-    return <Navigate to="/dashboard" replace />;
+    console.log('AuthGuard - not admin, redirecting to dashboard');
+    return <Navigate to="/app/dashboard" replace />;
   }
 
   if (!requireAuth && user) {
-    return <Navigate to="/dashboard" replace />;
+    console.log('AuthGuard - user logged in, redirecting to dashboard');
+    return <Navigate to="/app/dashboard" replace />;
   }
 
+  console.log('AuthGuard - rendering children');
   return <>{children}</>;
 };
