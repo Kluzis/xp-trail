@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from './useAuth';
 import { useProfile } from './useProfile';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/integrations/supabase/client';
 import { LessonCompletion, UserSkill, UserChallenge } from '@/lib/types';
 import { useAnalytics } from './useAnalytics';
 

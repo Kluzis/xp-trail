@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/integrations/supabase/client';
 import { AnalyticsEventType, AnalyticsEventData } from '@/lib/types';
 import { useAuth } from './useAuth';
 
